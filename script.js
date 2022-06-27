@@ -8,21 +8,27 @@
 const newEl = (el) => document.createElement(el);
 
 const getUserName = prompt("Inserisci il tuo username");
-localStorage.setItem("username", getUserName);
+
+// localStorage.setItem("username", getUserName);
+// navbar.append(`Ciao ${getUserName}, bentornato!`);   <------ Punto 1 e 2
+// body.append(navbar);
 
 const body = document.body;
 const navbar = newEl("nav");
 navbar.className = "navbar";
 
 try {
-  if (getUserName !== "") {
-    navbar.append(`Ciao ${getUserName}, bentornato!`);
+  if (localStorage.getItem("username") !== getUserName) {
+    localStorage.setItem("username", getUserName);
+    navbar.append(
+      `Ciao ${getUserName}, benvenuto. Sei stato registrato in localeStorage!`
+    );
     body.append(navbar);
   } else {
     throw new error();
   }
 } catch (error) {
-  navbar.append(`Ciao, non ho trovato il tuo username`);
+  navbar.append(`Ciao ${getUserName}, bentornato!`);
   body.append(navbar);
-  throw new Error("Can't find username");
+  throw new Error("Utente non trovato, aggiunto.");
 }
