@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  background-color: blue;
+  color: #fff;
+  font-weight: bolder;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
